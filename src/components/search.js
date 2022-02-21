@@ -1,8 +1,7 @@
- 
 import React, {useState} from 'react';
 import axios from 'axios';
-// import ReactMapGl, {Marker, Popup} from 'react-map-gl';
-// import 'mapbox-gl/dist/mapbox-gl.css';
+import ReactMapGl, {Marker, Popup} from 'react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const token = process.env.REACT_APP_MAP_KEY;
 let year;
@@ -122,13 +121,13 @@ const Search =()=>{
     const [year, setYear]=useState("");
     const [init, setInit] = useState(true);
 
-    // const [viewport, setViewport] = useState({
-    //     width: '42.5vw',
-    //     height:'25vh',
-    //     latitude:52.519334503212846,
-    //     longitude:13.415270749959939, 
-    //     zoom:10
-    // });
+    const [viewport, setViewport] = useState({
+        width: '42.5vw',
+        height:'25vh',
+        latitude:52.519334503212846,
+        longitude:13.415270749959939, 
+        zoom:10
+    });
 
     let dayArray=[];
     let objectSet = [];
@@ -189,13 +188,13 @@ const Search =()=>{
                 setCity(city_data_in_germany.name)
 
          
-                // setViewport({
-                //     width: '42.5vw',
-                //     height:'25vh',
-                //     latitude:response.data[0].lat,
-                //     longitude:response.data[0].lon,
-                //     zoom:10
-                // })
+                setViewport({
+                    width: '42.5vw',
+                    height:'25vh',
+                    latitude:response.data[0].lat,
+                    longitude:response.data[0].lon,
+                    zoom:10
+                })
 
                 axios.get(forecast)
                 .then(response=>{                
@@ -312,12 +311,12 @@ const Search =()=>{
             
             <section id="top_section">
 
-                {/* <ReactMapGl
+                <ReactMapGl
                 {...viewport}
                 onViewportChange={nextViewport => setViewport(nextViewport)}
                 mapboxApiAccessToken={token} 
                 ></ReactMapGl>
-                 */}
+                
                 <div>
                     <div id="top_title"><p>Weather and Holiday</p></div>
                     <form onSubmit={handleSubmit} id="top_form">
