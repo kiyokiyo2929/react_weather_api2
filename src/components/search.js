@@ -17,12 +17,12 @@ const Search = ()=>{
 
     return (
         <div> hello
-
-                <ReactMapGl
+                {token}
+                {/* <ReactMapGl
                 {...viewport}
                 onViewportChange={nextViewport => setViewport(nextViewport)}
                 mapboxApiAccessToken={token} 
-                ></ReactMapGl>
+                ></ReactMapGl> */}
         </div>
     )
 }
