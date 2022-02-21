@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import ReactMapGl, {Marker, Popup} from 'react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+// import ReactMapGl, {Marker, Popup} from 'react-map-gl';
+// import 'mapbox-gl/dist/mapbox-gl.css';
 
-const token = process.env.REACT_APP_MAP_KEY;
+// const token = process.env.REACT_APP_MAP_KEY;
 
 const Search = ()=>{
     const [viewport, setViewport] = useState({
@@ -18,11 +18,11 @@ const Search = ()=>{
     return (
         <div> hello
 
-                <ReactMapGl
+                {/* <ReactMapGl
                 {...viewport}
                 onViewportChange={nextViewport => setViewport(nextViewport)}
                 mapboxApiAccessToken={token} 
-                ></ReactMapGl>
+                ></ReactMapGl> */}
         </div>
     )
 }
