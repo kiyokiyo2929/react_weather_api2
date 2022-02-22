@@ -423,13 +423,14 @@ header p {
 
   #weather_left {
     flex-direction: column;
-    height: 70vh;
+    height: 80vh;
     margin-bottom: 10vh;
   }
 
   #weather_right {
     flex-direction: column;
     min-height: 40vh;
+    height: 40vh;
   }
 
   #today_weather_wraper {
@@ -440,6 +441,7 @@ header p {
   #today_weather {
     width: 90vw;
     min-height: 30vh;
+    height: 50vh;
     padding-bottom: 1vh;
     margin-bottom: 10vh;
   }
