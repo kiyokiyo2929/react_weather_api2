@@ -439,7 +439,7 @@ header p {
 
   #today_weather {
     width: 90vw;
-    min-height: 20vh;
+    min-height: 30vh;
     padding-bottom: 1vh;
     margin-bottom: 10vh;
   }
@@ -462,6 +462,7 @@ header p {
   #weather_flex li {
     width: 20vw;
     margin-left: 1vh;
+    margin-bottom: 2vh;
   }
   /* alert */
   #alert_part {
@@ -491,10 +492,15 @@ header p {
   #day_flex li {
     width: 20vw;
     margin-left: 2vw;
+    margin-bottom: 2vh;
   }
 
   #holiday_title {
     height: 7vh;
+  }
+
+  #holiday_name {
+    overflow-wrap: break-word;
   }
 
   #public_holiday_part h3 {
