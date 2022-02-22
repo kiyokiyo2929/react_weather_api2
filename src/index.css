@@ -378,7 +378,23 @@ header p {
   #top_section {
     flex-direction: column;
   }
+  /* cit name  */
+  #city_name_wrapper {
+    width: 90vw;
+  }
+
+  /* weather  */
+  #today_weather {
+    width: 90vw;
+  }
   #weather_section {
     flex-direction: column;
+  }
+  #weather_right {
+    width: 90vw;
+  }
+
+  #alert_part {
+    width: 90vw;
   }
 }
