@@ -423,7 +423,7 @@ header p {
 
   #weather_left {
     flex-direction: column;
-    height: 60vh;
+    height: 70vh;
     margin-bottom: 10vh;
   }
 
