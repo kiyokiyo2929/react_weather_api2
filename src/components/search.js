@@ -339,7 +339,7 @@ const Search =()=>{
                         <p id="states_color">{states}</p>
                     </div>
             
-                    <div>
+                    <div id="today_weather_wraper">
                     {(today_weather)?
                         <div id="today_weather">
                             <h2>{get_time(today_weather.dt)}/ {get_day_of_week(today_weather.dt)}</h2>
