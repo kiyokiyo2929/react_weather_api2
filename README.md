@@ -1,4 +1,6 @@
+--------------------------
 React (react hooks) + API
+--------------------------
 
 feiertage-api (Public holiday data in Germany)
 https://feiertage-api.de/
@@ -9,8 +11,10 @@ https://openweathermap.org/
 mapbox (Map data)
 https://www.mapbox.com/
 
+=================================================================================================
 If you you this code, you need token from openweathermap and mapbox.
-On .env file, you add "REACT_APP_API_KEY" for openweathermap and "REACT_APP_MAP_KEY" for mapbox.
+On ".env file", you add "REACT_APP_API_KEY" for openweathermap and "REACT_APP_MAP_KEY" for mapbox.
+=================================================================================================
 
 ((data process))
 
@@ -20,8 +24,9 @@ input city name (1) ->  (openweathermap) (2) -> Geo and Lat and Lon Data (3) -> 
 
                                                                  
                                                                  -> (mapbox) with Lat and Lon data   (4)  -> Map data (5)
+                                                                 
 
-
+============================================================================================================================
 (example display1)
 ![weather_holiday_01](https://user-images.githubusercontent.com/59493506/155118822-83610e52-12b2-4922-b6c7-4517ae14d48e.jpg)
 
