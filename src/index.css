@@ -430,7 +430,6 @@ header p {
   #weather_right {
     flex-direction: column;
     min-height: 40vh;
-    height: 40vh;
   }
 
   #today_weather_wraper {
@@ -467,10 +466,11 @@ header p {
     margin-bottom: 2vh;
   }
   /* alert */
-  #alert_part {
+  #aleart_part {
     min-width: 90vw;
     max-width: 90vw;
     flex-wrap: wrap;
+    margin-top: 5vh;
   }
 
   #aleart_part h2 {
