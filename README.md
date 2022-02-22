@@ -15,7 +15,9 @@ On .env file, you add "REACT_APP_API_KEY" for openweathermap and "REACT_APP_MAP_
 ((data process))
 
 input city name ->  (openweathermap) -> Geo and Lat and Lon Data -> (openweathermap) with Lat and Lon data -> Weather forecast data 
+
                                                                  -> (feiertage-api) with Geo data ->  Public holiday data, but only german city
+                                                                 
                                                                  -> (mapbox) with Lat and Lon data -> Map data
 
 (example display1)
