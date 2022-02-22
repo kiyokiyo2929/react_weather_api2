@@ -4,7 +4,6 @@ import ReactMapGl, {Marker, Popup} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const token = process.env.REACT_APP_MAP_KEY;
-let year;
 
 
 const get_time = (unix_timestamp)=>{
@@ -24,14 +23,6 @@ const get_local_day_hour = (unix_timestamp, localtime)=>{
     let newhour = date.toGMTString().substr(17, 5)
     return newhour
 }
-
-const get_hour_time = (unix_timestamp)=>{
-    let date = new Date(unix_timestamp * 1000);
-    let date_houres = ("0"+(date.getHours())).substr(-2);
-    let date_minutes = ("0"+(date.getMinutes())).substr(-2);
-    return date_houres+":"+ date_minutes 
-}
-
 
 const get_year = () =>{
     let new_Date = new Date();
@@ -102,9 +93,6 @@ const holiday_edit = (holday_data)=>{
 
 const Search =()=>{
     const [search, setSearch] = useState("");
-    const [result, setResult] = useState("");
-    const [holiday, setHoliday]= useState("");
-    const [data, seData] = useState("");
     const [day, setDay] = useState("");
     const [weather, setWeather]=useState("");
     const [today_weather, setToday_weather]=useState("");
@@ -137,34 +125,29 @@ const Search =()=>{
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        setResult(search);
+       
         setInit(false);
         let geo_url=`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=${key}`
         let state_code;
         let states;
         let country;
      
-
         //geo_search// & //weather_search//
         axios.get(geo_url)
         .then(response=>{
             if(response.data[0]){
-                console.log(response.data[0].name.length)
               
-                console.log(response.data)
-
                 let country_pick=[]
                  response.data.forEach((el,idx)=>{
                    (el.country=="DE")?country_pick.push(idx):console.log('')
                 });
-                console.log(country_pick);
 
                 let german_city_position;
                     (country_pick[0])?german_city_position = country_pick[0]:german_city_position = 0;               
 
                 let city_data_in_germany = response.data[german_city_position];
-                console.log(city_data_in_germany);
                 
+                // (check whether city name long or not)
                 if(city_data_in_germany.name.length > 11){
                     setCity_name_so_long(true);
                     setCity_name_long(false);
@@ -186,6 +169,7 @@ const Search =()=>{
                 setCity(city_data_in_germany.name)
 
          
+                // (give lat and lon data to map API)
                 setViewport({
                     width: '42.5vw',
                     height:'25vh',
@@ -194,22 +178,23 @@ const Search =()=>{
                     zoom:10
                 })
 
+                // (get information from forecast API)
+
                 axios.get(forecast)
                 .then(response=>{                
                     (response.data.alerts)? 
                     (response.data.alerts.length>5)?setAleart_long(true):setAleart_long(false)
                     :setAleart_long(false);
                     
-
                     let forecast_data = response.data.daily;
                     setTimeZone(response.data.timezone_offset);
-                    console.log(response.data)
                     
                     let today_forcast = forecast_data.shift();
                     setAleart(response.data.alerts)
                     setToday_weather(today_forcast);
                     setWeather(forecast_data)
 
+                    // (state check)
                     if(country=="DE"){
                     switch(states){
                         case "Brandenburg":
@@ -276,6 +261,8 @@ const Search =()=>{
                                state_code = "TH";
                                break
                     }
+
+                    // (get holiday info from API)
                     let year_data_api = get_year();
                     setYear(year_data_api)
                     let url =`https://feiertage-api.de/api/?jahr=${year_data_api}&nur_land=${state_code}`;
@@ -307,7 +294,7 @@ const Search =()=>{
 
     return(
         <div>
-            <header><p>Neu-Gier</p></header>
+            <header><p><a href="https://portfolio-mongo.herokuapp.com/">Neu-Gier</a></p></header>
             
             <section id="top_section">
                 
@@ -340,16 +327,16 @@ const Search =()=>{
                     </div>
             
                     <div id="today_weather_wraper">
-                    {(today_weather)?
-                        <div id="today_weather">
-                            <h2>{get_time(today_weather.dt)}/ {get_day_of_week(today_weather.dt)}</h2>
-                            <p className="sun_time">Sunrise : {get_local_day_hour (today_weather.sunrise, timezone)}</p>
-                            <p className="sun_time">Sunset : {get_local_day_hour (today_weather.sunset, timezone)}</p>
-                            <p id="today_weather_space">{today_weather.weather[0].main} / {today_weather.weather[0].description}</p>
-                            <img src={`${process.env.PUBLIC_URL}/${today_weather.weather[0].main}.svg`}/>
-                            <p id="today_tmp">{Math.floor(today_weather.temp.max)}° /  {Math.floor(today_weather.temp.min)}°</p>
-                        </div>
-                    :""} 
+                        {(today_weather)?
+                            <div id="today_weather">
+                                <h2>{get_time(today_weather.dt)}/ {get_day_of_week(today_weather.dt)}</h2>
+                                <p className="sun_time">Sunrise : {get_local_day_hour (today_weather.sunrise, timezone)}</p>
+                                <p className="sun_time">Sunset : {get_local_day_hour (today_weather.sunset, timezone)}</p>
+                                <p id="today_weather_space">{today_weather.weather[0].main} / {today_weather.weather[0].description}</p>
+                                <img src={`${process.env.PUBLIC_URL}/${today_weather.weather[0].main}.svg`}/>
+                                <p id="today_tmp">{Math.floor(today_weather.temp.max)}° /  {Math.floor(today_weather.temp.min)}°</p>
+                            </div>
+                        :""} 
                     </div>
                 </div>
                 <div id="weather_right">
@@ -369,7 +356,7 @@ const Search =()=>{
                     {(aleart)?
                         <div id="aleart_part">
                             <div id="aleart_title">
-                              <h2>Weather Alerts</h2>
+                                <h2>Weather Alerts</h2>
                             </div>
                             <ul className="list_flex" id ="aleart_wrapper" className={(aleart_long)? "alert_long" :"alert_normal"} >
                                 {aleart.map((info)=>
@@ -393,10 +380,10 @@ const Search =()=>{
                 </div>
                 <ul className="list_flex" id="day_flex">
                     {day.map((info)=>
-                    <li key={info.datum}>
-                        <p id="holiday_name">{info.name}</p>
-                        <p id="holiday_date">{holiday_edit(info.datum)}</p>
-                    </li>
+                        <li key={info.datum}>
+                            <p id="holiday_name">{info.name}</p>
+                            <p id="holiday_date">{holiday_edit(info.datum)}</p>
+                        </li>
                     )}
                 </ul>
             </div>
