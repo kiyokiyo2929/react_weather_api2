@@ -1,7 +1,14 @@
-aaaaaaa
+React (react hooks) + API
 
-feiertage-api
+feiertage-api (Public holiday data in Germany)
 https://feiertage-api.de/
+
+openweathermap (Weather forecast data)
+https://openweathermap.org/
+
+mapbox (Map data)
+https://www.mapbox.com/
+
 
 # Getting Started with Create React App
 
