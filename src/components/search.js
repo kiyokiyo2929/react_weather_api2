@@ -392,7 +392,7 @@ const Search =()=>{
         }
 
         {(init)?
-        <div id="init"><p>You Can find public holidays in Geramny ( search with german city )</p></div>
+        <div id="init"><p>You Can find public holidays in Geramny ( searching the name of a city in Germany )</p></div>
         :
         ""
         }
