@@ -201,6 +201,8 @@ const Search =()=>{
                     (response.data.alerts)? 
                     (response.data.alerts.length>5)?setAleart_long(true):setAleart_long(false)
                     :setAleart_long(false);
+                    
+
                     let forecast_data = response.data.daily;
                     setTimeZone(response.data.timezone_offset);
                     console.log(response.data)
@@ -310,12 +312,6 @@ const Search =()=>{
             <header><p>Neu-Gier</p></header>
             
             <section id="top_section">
-
-                <ReactMapGl
-                {...viewport}
-                onViewportChange={nextViewport => setViewport(nextViewport)}
-                mapboxApiAccessToken={token} 
-                ></ReactMapGl>
                 
                 <div>
                     <div id="top_title"><p>Weather and Holiday</p></div>
@@ -324,6 +320,12 @@ const Search =()=>{
                             <input type="submit" value="Search" id="top_input_btn"/>
                     </form>
                 </div>
+
+                <ReactMapGl
+                {...viewport}
+                onViewportChange={nextViewport => setViewport(nextViewport)}
+                mapboxApiAccessToken={token} 
+                ></ReactMapGl>
 
             </section>
 
@@ -371,7 +373,7 @@ const Search =()=>{
                             </div>
                             <ul className="list_flex" id ="aleart_wrapper" className={(aleart_long)? "alert_long" :"alert_normal"} >
                                 {aleart.map((info)=>
-                                <li key={info.description} id="aleart_li_wrapper">
+                                <li key={`${info.event}+${info.start}+${info.end}`} id="aleart_li_wrapper">
                                     <h3>{info.event}</h3>
                                     <p>{ get_day_hour_time(info.start, timezone) }</p>
                                     <p id="between">&nbsp;&nbsp;&nbsp;- </p>

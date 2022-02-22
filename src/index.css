@@ -42,7 +42,7 @@ header p {
 #top_title {
   height: 13vh;
   width: 42.5vw;
-  margin-left: 5vw;
+  margin-left: 0vw;
   margin-top: 0;
 }
 
@@ -63,7 +63,8 @@ header p {
 
 #top_form {
   margin-top: 2.5vh;
-  margin-left: 5vw;
+  margin-left: 0vw;
+  margin-right: 5vw;
   width: 42.5vw;
 }
 
@@ -116,7 +117,7 @@ header p {
   font-size: 40px;
 }
 #city_name_long {
-  font-size: 70px;
+  font-size: 65px;
   margin-bottom: 0vh;
 }
 
@@ -137,6 +138,7 @@ header p {
   margin-top: 0vh;
   margin-bottom: 2vh;
   text-align: left;
+  word-wrap: break-word;
 }
 #city_name_wrapper p {
   margin-top: 1vh;
@@ -213,17 +215,32 @@ header p {
 }
 
 /* aleart */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: whitesmoke;
+}
+::-webkit-scrollbar-thumb {
+  background-color: silver;
+}
+
+.alert_normal {
+  width: 42.5vw;
+  height: 17vh;
+}
+
 .alert_long {
   overflow: scroll;
   width: 42.5vw;
+  height: 17vh;
 }
 
 #aleart_title {
   width: 42.5vw;
   background: gainsboro;
-}
-.alert_normal {
-  width: 45vw;
 }
 
 #aleart_li_wrapper {
@@ -251,15 +268,15 @@ header p {
   list-style: none;
   padding-left: 0;
   width: 42.5vw;
-  height: 16vh;
+  height: 17vh;
 }
 #aleart_wrapper li {
-  width: 9vw;
+  min-width: 8vw;
   margin-right: 1vh;
 }
 
 #aleart_wrapper h3 {
-  margin-top: 1vh;
+  margin-top: 0vh;
   text-align: left;
   margin-bottom: 2vh;
   font-size: 15px;
@@ -312,7 +329,7 @@ header p {
 #public_holiday_part h3 {
   text-align: left;
   margin-bottom: 1vh;
-  margin-top: 2vh;
+  margin-top: 1vh;
   text-align: center;
   letter-spacing: 3px;
   font-size: 1.1vw;
@@ -355,4 +372,13 @@ header p {
   line-height: 20vh;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+  #top_section {
+    flex-direction: column;
+  }
+  #weather_section {
+    flex-direction: column;
+  }
 }
