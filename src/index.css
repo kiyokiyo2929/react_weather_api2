@@ -514,8 +514,7 @@ header p {
     font-size: 4vw;
   }
 
-  #init p {
-    font-size: 15px;
-    overflow-wrap: break-word;
+  #init {
+    display: none;
   }
 }
