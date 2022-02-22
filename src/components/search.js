@@ -10,7 +10,6 @@ let year;
 const get_time = (unix_timestamp)=>{
     let date = new Date(unix_timestamp * 1000);
     let newDate = date.toString().substr(3, 8)
-    
     return newDate
 }
 const get_day_hour_time = (unix_timestamp)=>{
@@ -18,7 +17,6 @@ const get_day_hour_time = (unix_timestamp)=>{
     let newDate = date.toString().substr(4, 6)
     let date_houres = ("0"+(date.getHours())).substr(-2);
     let date_minutes = ("0"+(date.getMinutes())).substr(-2);
-
     return newDate + ", " + date_houres+":"+ date_minutes
 }
 const get_local_day_hour = (unix_timestamp, localtime)=>{
@@ -321,11 +319,13 @@ const Search =()=>{
                     </form>
                 </div>
 
-                <ReactMapGl
-                {...viewport}
-                onViewportChange={nextViewport => setViewport(nextViewport)}
-                mapboxApiAccessToken={token} 
-                ></ReactMapGl>
+                <div id="map_area">
+                    <ReactMapGl
+                    {...viewport}
+                    onViewportChange={nextViewport => setViewport(nextViewport)}
+                    mapboxApiAccessToken={token} 
+                    ></ReactMapGl>
+                </div>
 
             </section>
 
