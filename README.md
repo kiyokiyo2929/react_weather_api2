@@ -13,17 +13,17 @@ https://www.mapbox.com/
 
 
 If you you this code, you need token from openweathermap and mapbox.
-On ".env file", you add "REACT_APP_API_KEY" for openweathermap and "REACT_APP_MAP_KEY" for mapbox.
+On ".env file", you add "REACT_APP_API_KEY" and token for openweathermap,  and "REACT_APP_MAP_KEY" and token for mapbox.
 
 
 ((data process))
 
-input city name (1) ->  (openweathermap) (2) -> Geo and Lat and Lon Data (3) -> (openweathermap) with Lat and Lon data (4) -> Weather forecast data (5)
+input city name (1) ->  (openweathermap) (2) -> Get Geo and Lat and Lon Data (3) -> (openweathermap) with Lat and Lon data (4) -> Get Weather forecast data (5)
 
-                                                                 -> (feiertage-api) with Geo data  (4) ->  Public holiday data, but only german city(5)
+                                                                 -> (feiertage-api) with Geo data  (4) ->  Get Public holiday data, but only german city(5)
 
                                                                  
-                                                                 -> (mapbox) with Lat and Lon data   (4)  -> Map data (5)
+                                                                 -> (mapbox) with Lat and Lon data   (4)  -> Get Map data (5)
                                                                  
 
 
