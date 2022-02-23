@@ -173,8 +173,10 @@ const Search =()=>{
                 setViewport({
                     width: '42.5vw',
                     height:'25vh',
-                    latitude:response.data[0].lat,
-                    longitude:response.data[0].lon,
+                    latitude:city_data_in_germany.lat,
+                    // latitude:response.data[0].lat,
+                    longitude:city_data_in_germany.lon,
+                    // longitude:response.data[0].lon,
                     zoom:10
                 })
 
